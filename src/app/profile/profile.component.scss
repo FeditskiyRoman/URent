@@ -17,19 +17,19 @@ $colour-yellow: #ffc923;
 $colour-blue: #4f89fe;
 $colour-deep-grey: #4d4d4d;
 $colour-light-grey: rgb(218,216,216);
-
 //Styles
 a {
   text-decoration: none;
   color: $colour-grey;
   cursor: pointer;
 }
+
 .container {
   margin-top: 30px;
 }
 
 .password {
-  justify-content: right!important;
+  justify-content: right !important;
 }
 
 .col-md-6 {
@@ -49,8 +49,9 @@ a {
   display: block;
   color: red;
 }
+
 .error-input {
-  box-shadow: 0 0 0 0.2rem rgba(255,0,0,.25);
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, .25);
 }
 
 .success-message {
@@ -59,5 +60,5 @@ a {
 }
 
 .success-input {
-  box-shadow: 0 0 0 0.2rem rgba(0,204,102,.25);
+  box-shadow: 0 0 0 0.2rem rgba(0, 204, 102, .25);
 }
