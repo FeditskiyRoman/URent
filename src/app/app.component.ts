@@ -8,5 +8,7 @@ import { AuthenticationService } from './authentication.service';
 })
 export class AppComponent {
   title = 'app';
-  constructor (public auth: AuthenticationService){}
+  collapse: Boolean = true;
+
+  constructor (public auth: AuthenticationService) {}
 }

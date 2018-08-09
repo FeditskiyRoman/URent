@@ -47,19 +47,23 @@ export class RentListComponent implements OnInit {
 
   openLg(content) {
     this.modalService.open(content, {size: 'lg'}).result.then(() => {
-      // if (this.files.length > 0) {
-      //     const file = this.files[0];
+      if (this.files.length > 0) {
+        const formData = new FormData();
 
-      //     const formData = new FormData();
-      //     formData.append('file', file, file.name);
+        for (const key in this.files) {
+          if (this.files[key]) {
+            formData.append('file', this.files[key], this.files[key].name);
+          }
+        }
 
-      //     this.rentService.uploadFiles(formData).subscribe(res => {
-      //       console.log(res);
-      //     });
-      // }
-      this.rentService.createRent(this.rent).subscribe(res => {
-        this.getRents(this.page, this.limit);
-      });
+        this.rentService.uploadFiles(formData).subscribe(img => {
+          this.rent.imgs = img;
+
+          return this.rentService.createRent(this.rent).subscribe(() => {
+            this.getRents(this.page, this.limit);
+          });
+        });
+      }
     }, () => {});
   }
 

@@ -34,6 +34,7 @@ a {
 
 .col-md-6 {
   display: inline-block;
+  padding-bottom: 30px;
 }
 
 .btn-primary {
@@ -61,4 +62,8 @@ a {
 
 .success-input {
   box-shadow: 0 0 0 0.2rem rgba(0, 204, 102, .25);
+}
+
+.log-out-btn {
+  margin-right: 10px;
 }

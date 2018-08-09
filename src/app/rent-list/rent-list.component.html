@@ -3,14 +3,14 @@
     <button type="button" class="btn btn-outline-success" (click)="openLg(content)">Add new rent</button>
   </div>
 
-  <div class="row">
+  <div class="row rent-list-row">
     <app-rent-block
       *ngFor="let rent of rentList"
       class="col-md-4"
       [rent]="rent"></app-rent-block>
   </div>
 
-  <ngb-pagination class="d-flex justify-content-center"
+  <ngb-pagination class="d-flex justify-content-center fixed-bottom"
     [collectionSize]="pages"
     [(page)]="page"
     [pageSize]="limit"
@@ -81,6 +81,7 @@
               multiple
               class="form-control-file"
               id="file"
+              name="file"
               (change)="onFileChange($event)">
           </div>
         </div>

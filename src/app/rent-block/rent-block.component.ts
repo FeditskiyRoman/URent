@@ -13,7 +13,15 @@ export class RentBlockComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.rent.updated_at = new Date(this.rent.updated_at).toLocaleDateString();
-  }
+    const windLoc = window.location;
 
+    this.rent.updated_at = new Date(this.rent.updated_at).toLocaleDateString();
+
+    const arr = [];
+    this.rent.imgs.map(img => {
+      arr.push(windLoc.protocol + '//' + windLoc.hostname + ':' + windLoc.port + '/api/file/' + img);
+    });
+
+    this.rent.imgs = arr;
+  }
 }

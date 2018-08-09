@@ -24,19 +24,17 @@ export class RentService {
   createRent(rent): Observable <any> {
     return this.http.post('/api/rent', rent, {
       headers: {
-        Authorization: `Bearer ${this.authService.getToken()}`,
-        // 'Content-Type': 'multipart/form-data'
+        Authorization: `Bearer ${this.authService.getToken()}`
       }
     }).pipe(
       map(data => data)
     );
   }
 
-  uploadFiles(files): Observable <any> {
-    return this.http.post('/api/files', files, {
+  uploadFiles(formData): Observable <any> {
+    return this.http.post('/api/files', formData, {
       headers: {
-        Authorization: `Bearer ${this.authService.getToken()}`,
-        'Content-Type': 'multipart/form-data'
+        Authorization: `Bearer ${this.authService.getToken()}`
       }
     }).pipe(
       map(data => data)

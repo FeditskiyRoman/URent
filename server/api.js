@@ -40,5 +40,6 @@ router.post('/api/rent', auth, ctrlRent.create);
 
 // files
 router.post('/api/files', auth, ctrlRent.files);
+router.get('/api/file/:name', ctrlRent.getFile);
 
 module.exports = router;

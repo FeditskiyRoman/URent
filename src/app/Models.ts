@@ -33,6 +33,6 @@ export class Rent {
   price: Number;
   beds: Number;
   baths: Number;
-  img: Array<string>;
+  imgs: Array<string>;
   description: String;
 }
