@@ -13,7 +13,7 @@ export class RentBlockComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.rent.update = new Date(this.rent.update).toLocaleDateString();
+    this.rent.updated_at = new Date(this.rent.updated_at).toLocaleDateString();
   }
 
 }

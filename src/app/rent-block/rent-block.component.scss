@@ -15,7 +15,19 @@
 
 .carousel-img {
   width: 100%;
+  max-height: 232px;
   height: 100%;
+}
+
+.no-photoes {
+  height: 232px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #9b8977;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
 }
 
 .block-body {

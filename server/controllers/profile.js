@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
-var passport = require('passport/lib');
 
 module.exports.profileRead = (req, res) => {
   if (!req.payload._id) {

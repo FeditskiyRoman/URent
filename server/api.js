@@ -9,6 +9,7 @@ const auth = jwt({
 
 const ctrlProfile = require('./controllers/profile');
 const ctrlAuth = require('./controllers/authentication');
+const ctrlRent = require('./controllers/rent');
 
 const router = express.Router(); /** Initializing Routes instance **/
 
@@ -32,5 +33,12 @@ router.delete('/api/delete', auth, ctrlProfile.deleteUser);
 // login-register authentication
 router.post('/api/register', ctrlAuth.register);
 router.post('/api/login', ctrlAuth.login);
+
+// rent
+router.get('/api/rents/:page/:limit', auth, ctrlRent.getAll);
+router.post('/api/rent', auth, ctrlRent.create);
+
+// files
+router.post('/api/files', auth, ctrlRent.files);
 
 module.exports = router;

@@ -23,7 +23,7 @@ export class LoginComponent {
 
   login() {
     this.auth.login(this.credentials).subscribe(() => {
-      this.router.navigateByUrl('/profile');
+      this.router.navigateByUrl('/rent-list');
     }, (err) => {
       console.error(err);
       this.fieldsMessage = 'error-message';

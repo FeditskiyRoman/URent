@@ -16,13 +16,14 @@ import { RentService } from './rent.service';
 import { RentListComponent } from './rent-list/rent-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RentBlockComponent } from './rent-block/rent-block.component';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 const routes: Routes = [
   { path: 'rent-list', component: RentListComponent, canActivate: [AuthGuardService] },
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
-  { path: '', component: RentListComponent, canActivate: [AuthGuardService] },
+  { path: '', redirectTo: 'rent-list', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
 
@@ -42,7 +43,8 @@ const routes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(routes),
     CustomFormsModule,
-    NgbModule
+    NgbModule.forRoot(),
+    GooglePlaceModule
   ],
   providers: [
     RentService,

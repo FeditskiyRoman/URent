@@ -18,6 +18,9 @@ const User = new mongoose.Schema({
     unique: true
   },
   avatar: String,
+  rents: [{
+    type: String
+  }],
   created_at: {
     type: Date,
     default: Date.now
