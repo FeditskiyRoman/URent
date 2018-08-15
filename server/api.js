@@ -36,6 +36,7 @@ router.post('/api/login', ctrlAuth.login);
 
 // rent
 router.get('/api/rents/:page/:limit', auth, ctrlRent.getAll);
+router.get('/api/rent/:id', auth, ctrlRent.get);
 router.post('/api/rent', auth, ctrlRent.create);
 
 // files

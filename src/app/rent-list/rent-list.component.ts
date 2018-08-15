@@ -3,6 +3,7 @@ import { RentService } from '../rent.service';
 import { NgbPagination, NgbPaginationConfig, NgbModal } from '../../../node_modules/@ng-bootstrap/ng-bootstrap';
 import { GooglePlaceDirective } from '../../../node_modules/ngx-google-places-autocomplete';
 import { ComponentRestrictions } from '../../../node_modules/ngx-google-places-autocomplete/objects/options/componentRestrictions';
+import { TranslateService } from '@ngx-translate/core';
 import { Rent } from '../Models';
 
 @Component({
@@ -20,7 +21,13 @@ export class RentListComponent implements OnInit {
   rent: Rent = new Rent;
   files = [];
 
-  constructor(private rentService: RentService, private modalService: NgbModal) {}
+  constructor(private rentService: RentService, private modalService: NgbModal, private translate: TranslateService) {
+    translate.addLangs(['en', 'ua']);
+    translate.setDefaultLang('en');
+
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|ua/) ? browserLang : 'en');
+  }
 
   private getRents(page: Number, limit: Number) {
     this.rentService.getRentList(page, limit).subscribe(((res: any) => {
@@ -30,7 +37,11 @@ export class RentListComponent implements OnInit {
   }
 
   onChange(address) {
-    this.rent.address = address.formatted_address;
+    this.rent.address = {
+      formated: address.formatted_address,
+      lat: address.geometry.location.lat(),
+      lng: address.geometry.location.lng()
+    };
   }
 
   onFileChange(e) {
@@ -62,6 +73,10 @@ export class RentListComponent implements OnInit {
           return this.rentService.createRent(this.rent).subscribe(() => {
             this.getRents(this.page, this.limit);
           });
+        });
+      } else {
+        this.rentService.createRent(this.rent).subscribe(() => {
+          this.getRents(this.page, this.limit);
         });
       }
     }, () => {});

@@ -1,0 +1,61 @@
+<div class="rent-page">
+  <div class="top-photoes-rent-page">
+    <ngb-carousel *ngIf="rent.imgs" [showNavigationIndicators]="false" [showNavigationArrows]="rent.imgs.length ? true : false"
+      [interval]="0">
+      <ng-template ngbSlide *ngFor="let img of rent.imgs">
+        <div class="carousel-img" [ngStyle]="{'background-image': 'url(' + img + ')'}"></div>
+      </ng-template>
+      <ng-template ngbSlide *ngIf="!rent.imgs.length">
+        <div class="carousel-img no-photoes">
+          <span>No Photoes</span>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 col-sm-12 col-md-offset-1 body-left-bar">
+        <div class="body-title">
+          <h3
+            class="section-title"
+            *ngIf="rent.address">{{rent.address.formated}}</h3>
+          <h5>
+            <span *ngIf="rent.beds">{{rent.beds}} Bed
+              <span *ngIf="rent.beds &&rent.baths"> · </span>
+            </span>
+            <span *ngIf="rent.baths">{{rent.baths}} Bath</span>
+          </h5>
+        </div>
+        <div class="body-title">
+          <h3 class="section-title">Description</h3>
+          <div>{{rent.description}}</div>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-12 body-right-bar-container">
+        <div class="body-right-bar">
+          <div class="body-right-bar-section">
+            <div class="body-right-bar-price">
+              <span class="price-number">
+                ${{rent.price}}
+              </span>
+              <span class="price-period">/month</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <h3 class="col-md-3 text-center" i18n="description">Description</h3>
+      <div class="col-md-9">
+        {{rent.description}}
+      </div> -->
+    </div>
+  </div>
+  <div class="map-container">
+    <ngui-map *ngIf="rent.address" [options]="{center: {
+        lat: +rent.address.lat,
+        lng: +rent.address.lng
+      }}">
+      <marker [position]="[+rent.address.lat, +rent.address.lng]" draggable="false"></marker>
+    </ngui-map>
+  </div>
+</div>

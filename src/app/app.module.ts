@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { CustomFormsModule } from 'ngx-custom-validators';
@@ -17,15 +17,16 @@ import { RentListComponent } from './rent-list/rent-list.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { RentBlockComponent } from './rent-block/rent-block.component';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { RentPageComponent } from './rent-page/rent-page.component';
+import { AppRoutingModule } from './app-routing.module';
+import { MomentModule } from 'ngx-moment';
+import { NguiMapModule} from '@ngui/map';
 
-const routes: Routes = [
-  { path: 'rent-list', component: RentListComponent, canActivate: [AuthGuardService] },
-  { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService] },
-  { path: '', redirectTo: 'rent-list', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent }
-];
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -35,16 +36,26 @@ const routes: Routes = [
     ProfileComponent,
     RegisterComponent,
     PageNotFoundComponent,
-    RentBlockComponent
+    RentBlockComponent,
+    RentPageComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
     CustomFormsModule,
     NgbModule.forRoot(),
-    GooglePlaceModule
+    GooglePlaceModule,
+    AppRoutingModule,
+    MomentModule,
+    NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyAk5flZubiHIfvBh2NFIeNf9Qu-YasEAhM'}),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     RentService,

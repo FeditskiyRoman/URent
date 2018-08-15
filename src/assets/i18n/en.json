@@ -1,0 +1,11 @@
+{
+  "FORM": {
+    "ADDRESS": "Address",
+    "PRICE": "Price",
+    "BEDS": "Beds",
+    "BATHS": "Baths",
+    "PHOTOES": "Photoes",
+    "CHOSE-FILE": "Chose Files",
+    "DESCRIPTION": "Description"
+  }
+}

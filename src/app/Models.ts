@@ -29,10 +29,16 @@ export class TokenPayload {
 
 export class Rent {
   user_id: String;
-  address: String;
+  address: Address;
   price: Number;
   beds: Number;
   baths: Number;
   imgs: Array<string>;
   description: String;
+}
+
+export class Address {
+  formated: String;
+  lat: String;
+  lng: String;
 }

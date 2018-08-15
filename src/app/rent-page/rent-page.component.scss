@@ -1,0 +1,68 @@
+.container {
+  padding: 0;
+}
+
+.top-photoes-rent-page {
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.map-container {
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
+.body-left-bar {
+  .body-title {
+    border-bottom: 1px solid #c1c1c1;
+    padding: 16px;
+    
+    h5 {
+      font-size: 14px;
+    }
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+}
+
+.body-right-bar-container {
+  padding-right: 0px;
+}
+
+.body-right-bar {
+  position: relative;
+  top: -60px;
+  z-index: 100;
+  padding-left: 15px;
+
+  @media (max-width: 767px) {
+    top: 0px;
+    margin-top: 10px;
+    padding-right: 15px;
+  }
+
+  .body-right-bar-section {
+    border-radius: 4px;
+    border: 1px solid #c1c1c1;
+    background: #fff;
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .body-right-bar-price {
+    border-bottom: 1px solid #c1c1c1;
+    display: flex;
+    align-items: center;
+
+    .price-number {
+      font-size: 36px;
+      font-weight: bold;
+    }
+
+    .price-period {
+      font-size: 18px;
+    }
+  }
+}

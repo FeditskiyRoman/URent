@@ -1,6 +1,10 @@
-<div class="block-container card">
+<div class="block-container card" (click)="openRent()">
   <div class="cart-img-top">
-    <ngb-carousel [showNavigationIndicators]="false" [interval]="0">
+    <ngb-carousel
+      (click)="prev($event)"
+      [showNavigationIndicators]="false"
+      [showNavigationArrows]="rent.imgs.length ? true : false"
+      [interval]="0">
       <ng-template ngbSlide *ngFor="let img of rent.imgs">
         <img [src]="img" class="carousel-img" [alt]="img">
       </ng-template>
@@ -16,13 +20,13 @@
     <div class="main-info row">
       <p class="price col-md-6 col-6">${{rent.price}}/month</p>
       <p class="rooms col-md-6 col-6">
-        <span *ngIf="rent.beds">2 Bed
-          <span *ngIf="rent.beds &&rent.bath"> · </span>
+        <span *ngIf="rent.beds">{{rent.beds}} Bed
+          <span *ngIf="rent.beds &&rent.baths"> · </span>
         </span>
-        <span *ngIf="rent.bath">2 Bath</span>
+        <span *ngIf="rent.baths">{{rent.baths}} Bath</span>
       </p>
     </div>
-    <p class="address">{{rent.address}}</p>
-    <div class="update">last update {{rent.updated_at}}</div>
+    <p class="address" *ngIf="rent.address">{{rent.address.formated}}</p>
+    <div class="update">last update {{rent.updated_at | amTimeAgo}}</div>
   </div>
 </div>

@@ -40,17 +40,28 @@ function uploadFiles(req, res) {
   });
 }
 
+module.exports.get = (req, res) => {
+    Rent.findById(req.params.id)
+      .exec().then((rent) => {
+        res.json(rent);
+      }).catch(err => res.status(500).send({
+        error: err
+      }));
+};
+
 module.exports.getAll = (req, res) => {
   Rent.count().exec((err, count) => {
     Rent.find().limit(req.params.limit).skip(req.params.page * req.params.limit - req.params.limit).sort({
         'updated_at': -1
       })
-      .exec((err, rent) => {
+      .exec().then((rent) => {
         res.json({
           rent: rent,
           count: count
         });
-      })
+      }).catch(err => res.status(500).send({
+        error: err
+      }));
   });
 };
 

@@ -7,10 +7,14 @@ const Rent = new mongoose.Schema({
     required: true
   },
   address: {
-    type: String,
-    required: true
+    formated: {
+      type: String,
+      require: true,
+    },
+    lat: String,
+    lng: String
   },
-  bath: {
+  baths: {
     type: Number,
     default: 0
   },
