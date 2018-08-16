@@ -25,7 +25,6 @@ export class LoginComponent {
     this.auth.login(this.credentials).subscribe(() => {
       this.router.navigateByUrl('/rent-list');
     }, (err) => {
-      console.error(err);
       this.fieldsMessage = 'error-message';
       this.fieldsInfo = 'error-input';
       this.message = 'wrong email or password';

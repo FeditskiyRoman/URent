@@ -10,6 +10,11 @@ mongoose.connect(dbURI);
 // CONNECTION EVENTS
 mongoose.connection.on('connected', function () {
   console.log('Mongoose connected to ' + dbURI);
+  const migrations = require('./migrations/migrations');
+  console.log('-| Migrations start');
+  migrations(() => {
+    console.log('-| Migrations end');
+  });
 });
 mongoose.connection.on('error', function (err) {
   console.log('Mongoose connection error: ' + err);

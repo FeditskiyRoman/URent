@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const Rent = new mongoose.Schema({
   user_id: {
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: 'User',
     required: true
   },
   address: {

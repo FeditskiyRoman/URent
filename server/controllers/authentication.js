@@ -1,13 +1,13 @@
-var passport = require('passport/lib');
-var mongoose = require('mongoose');
-var User = mongoose.model('User');
+const passport = require('passport/lib');
+const mongoose = require('mongoose');
+const User = mongoose.model('User');
 
-var sendJSONresponse = function (res, status, content) {
+const sendJSONresponse = (res, status, content) => {
   res.status(status);
   res.json(content);
 };
 
-module.exports.register = function (req, res) {
+module.exports.register = (req, res) => {
   if (!req.body.first_name || !req.body.email || !req.body.password) {
     sendJSONresponse(res, 400, {
       "message": "All fields required"
@@ -15,7 +15,7 @@ module.exports.register = function (req, res) {
     return;
   }
 
-  var user = new User();
+  const user = new User();
 
   user.first_name = req.body.first_name;
   user.last_name = req.body.last_name;
@@ -23,7 +23,7 @@ module.exports.register = function (req, res) {
 
   user.setPassword(req.body.password);
 
-  user.save(function (err) {
+  user.save(err => {
     if (err) {
       res.status(500);
       res.send({
@@ -47,34 +47,38 @@ module.exports.login = (req, res) => {
     });
     return;
   }
-  User.findOne({email: req.body.email}).exec((err, result) => {
-    console.log(result);
-    if (result.deleted) {
-      sendJSONresponse(res, 400, {
-        "message": "User deleted"
-      })
-    } else { 
-      passport.authenticate('local', (err, user, info) => {
-        var token;
-    
-        // If Passport throws/catches an error
-        if (err) {
-          res.status(404).json(err);
+
+  User.findOne({
+    email: req.body.email
+  }).exec((err, result) => {
+    passport.authenticate('local', (err, user, info) => {
+      var token;
+
+      // If Passport throws/catches an error
+      if (err) {
+        res.status(404).json(err);
+        return;
+      }
+
+      // If a user is found
+      if (user) {
+        // If a user is deleted
+        if (user.deleted) {
+          sendJSONresponse(res, 400, {
+            "message": "User deleted"
+          });
           return;
         }
-    
-        // If a user is found
-        if (user) {
-          token = user.generateJwt();
-          res.status(200);
-          res.json({
-            "token": token
-          });
-        } else {
-          // If user is not found
-          res.status(401).json(info);
-        }
-      })(req, res);
-    }
+
+        token = user.generateJwt();
+        res.status(200);
+        res.json({
+          "token": token
+        });
+      } else {
+        // If user is not found
+        res.status(401).json(info);
+      }
+    })(req, res);
   });
 };
