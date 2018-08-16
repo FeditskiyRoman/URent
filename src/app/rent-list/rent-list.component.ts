@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { RentService } from '../rent.service';
-import { NgbPagination, NgbPaginationConfig, NgbModal } from '../../../node_modules/@ng-bootstrap/ng-bootstrap';
+import { NgbPagination, NgbPaginationConfig, NgbModal, NgbDateStruct, NgbCalendar } from '../../../node_modules/@ng-bootstrap/ng-bootstrap';
 import { GooglePlaceDirective } from '../../../node_modules/ngx-google-places-autocomplete';
 import { ComponentRestrictions } from '../../../node_modules/ngx-google-places-autocomplete/objects/options/componentRestrictions';
 import { TranslateService } from '@ngx-translate/core';
@@ -20,8 +20,13 @@ export class RentListComponent implements OnInit {
   limit: Number = 9;
   rent: Rent = new Rent;
   files = [];
+  data: NgbDateStruct;
 
-  constructor(private rentService: RentService, private modalService: NgbModal, private translate: TranslateService) {
+  constructor(
+    private rentService: RentService,
+    private modalService: NgbModal,
+    private translate: TranslateService,
+    private calendar: NgbCalendar) {
     translate.addLangs(['en', 'ua']);
     translate.setDefaultLang('en');
 

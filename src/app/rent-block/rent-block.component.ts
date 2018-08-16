@@ -29,6 +29,5 @@ export class RentBlockComponent implements OnInit {
     });
 
     this.rent.imgs = arr;
-    console.log(this.rent);
   }
 }

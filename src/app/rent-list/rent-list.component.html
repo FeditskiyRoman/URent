@@ -87,6 +87,28 @@
         </div>
 
         <div class="form-row">
+          <div class="form-group">
+            <label for="date">Available since</label>
+            <div class="inline-row">
+              <input
+                class="form-control"
+                placeholder="yyyy-mm-dd"
+                name="dp"
+                [(ngModel)]="date"
+                ngbDatepicker
+                id="date"
+                #dp="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
+                  <!-- <i src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> -->
+                  <i class="fa fa-calendar"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="form-row">
           <div class="form-group col-md-12">
             <label for="description">{{'FORM.DESCRIPTION' | translate}}</label>
             <textarea
@@ -94,6 +116,7 @@
               id="description"
               [(ngModel)]="rent.description"
               [ngModelOptions]="{standalone: true}"
+              maxlength="250"
               rows="5"></textarea>
           </div>
         </div>
