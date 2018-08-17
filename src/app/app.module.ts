@@ -24,6 +24,7 @@ import { NguiMapModule} from '@ngui/map';
 
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { RentFormComponent } from './rent-form/rent-form.component';
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
 }
@@ -37,7 +38,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     RegisterComponent,
     PageNotFoundComponent,
     RentBlockComponent,
-    RentPageComponent
+    RentPageComponent,
+    RentFormComponent
   ],
   imports: [
     BrowserModule,
