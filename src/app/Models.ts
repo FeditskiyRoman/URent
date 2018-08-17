@@ -30,11 +30,28 @@ export class TokenPayload {
 export class Rent {
   user_id: String;
   address: Address;
-  price: Number;
+  rentType: String;
+  built: Number | null;
+  repair: Number | null;
+  totalArea: Number;
+  kitchenArea: Number;
+  rooms: Number;
   beds: Number;
   baths: Number;
+  floor: Number;
+  totalFloors: Number;
+  additionalPayments: String | null;
+  paymentsSummer: Number;
+  paymentsWinter: Number;
+  price: Number;
   imgs: Array<string>;
   description: String;
+  available: Date;
+  rentTerm: String;
+  heating: String;
+  appliances: Array<string>;
+  furniture: Array<string>;
+  additionalEquipment: Array<string>;
 }
 
 export class Address {
