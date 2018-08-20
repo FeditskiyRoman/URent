@@ -46,29 +46,30 @@ export class RentFormComponent implements OnInit {
   }
 
   uploadRent() {
-    if (this.files.length > 0) {
-      const formData = new FormData();
+    console.log(this.rent);
+    // if (this.files.length > 0) {
+    //   const formData = new FormData();
 
-      for (const key in this.files) {
-        if (this.files[key]) {
-          formData.append('file', this.files[key], this.files[key].name);
-        }
-      }
+    //   for (const key in this.files) {
+    //     if (this.files[key]) {
+    //       formData.append('file', this.files[key], this.files[key].name);
+    //     }
+    //   }
 
-      this.rentService.uploadFiles(formData).subscribe(img => {
-        this.rent.imgs = img;
+    //   this.rentService.uploadFiles(formData).subscribe(img => {
+    //     this.rent.imgs = img;
 
-        return this.rentService.createRent(this.rent).subscribe(() => {
-          this.reloadPage.emit();
-          this.closePopup();
-        });
-      });
-    } else {
-      this.rentService.createRent(this.rent).subscribe(() => {
-        this.reloadPage.emit();
-        this.closePopup();
-      });
-    }
+    //     return this.rentService.createRent(this.rent).subscribe(() => {
+    //       this.reloadPage.emit();
+    //       this.closePopup();
+    //     });
+    //   });
+    // } else {
+    //   this.rentService.createRent(this.rent).subscribe(() => {
+    //     this.reloadPage.emit();
+    //     this.closePopup();
+    //   });
+    // }
   }
 
   ngOnInit() {

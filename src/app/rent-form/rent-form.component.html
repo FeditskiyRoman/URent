@@ -29,12 +29,40 @@
             <span class="input-group-text">$</span>
           </div>
           <input
-            type="text"
+            type="number"
+            min="0"
             [(ngModel)]="rent.price"
             [ngModelOptions]="{standalone: true}"
             class="form-control"
             id="price">
+          <div class="input-group-append">
+            <span class="input-group-text">{{'FORM.PER_MONTH' | translate}}</span>
+          </div>
         </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="paymentsSummer">{{'FORM.PAYMENTS_SUMMER' | translate}}</label>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="rent.paymentsSummer"
+          [ngModelOptions]="{standalone: true}"
+          id="paymentsSummer"
+          min="0">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="paymentsSummer">{{'FORM.PAYMENTS_WINTER' | translate}}</label>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="rent.paymentsWinter"
+          [ngModelOptions]="{standalone: true}"
+          id="paymentsWinter"
+          min="0">
       </div>
     </div>
 
@@ -42,30 +70,38 @@
 
     <div class="form-row">
       <div class="form-group col-md-4">
-        <label for="typeSelect">Rent type</label>
-        <select class="form-control" id="typeSelect">
-            <option>House</option>
-            <option>Apartment</option>
-            <option>Apartment Studio</option>
-            <option>Cottage</option>
-            <option>Room</option>
-          </select> 
+        <label for="typeSelect">{{'FORM.RENT_TYPE' | translate}}</label>
+        <select
+          class="form-control"
+          id="typeSelect"
+          [(ngModel)]="rent.rentType"
+          [ngModelOptions]="{standalone: true}">
+            <option>{{'FORM.HOUSE' | translate}}</option>
+            <option>{{'FORM.APARTMANT' | translate}}</option>
+            <option>{{'FORM.APARTMANT_STUDIO' | translate}}</option>
+            <option>{{'FORM.COTTAGE' | translate}}</option>
+            <option>{{'FORM.ROOM' | translate}}</option>
+        </select>
       </div>
 
       <div class="form-group col-md-4">
-        <label for="built">Built (year)</label>
+        <label for="built">{{'FORM.BUILT' | translate}}</label>
         <input
           type="number"
           class="form-control"
+          [(ngModel)]="rent.built"
+          [ngModelOptions]="{standalone: true}"
           id="built"
           min="0">
       </div>
 
       <div class="form-group col-md-4">
-        <label for="repair">Last Repair (year)</label>
+        <label for="repair">{{'FORM.REPAIR' | translate}}</label>
         <input
           type="number"
           class="form-control"
+          [(ngModel)]="rent.repair"
+          [ngModelOptions]="{standalone: true}"
           id="repair"
           min="0">
       </div>
@@ -75,30 +111,62 @@
 
     <div class="form-row">
       <div class="form-group col-md-6">
-        <label for="totalArea">Total Area</label>
+        <label for="totalArea">{{'FORM.TOTAL_AREA' | translate}}</label>
         <input
           type="number"
           class="form-control"
+          [(ngModel)]="rent.totalArea"
+          [ngModelOptions]="{standalone: true}"
           id="totalArea"
           min="0">
       </div>
 
       <div class="form-group col-md-6">
-        <label for="areaKitchen">Area Of The Kitchen</label>
+        <label for="areaKitchen">{{'FORM.AREA_KITCHEN' | translate}}</label>
         <input
           type="number"
           class="form-control"
+          [(ngModel)]="rent.kitchenArea"
+          [ngModelOptions]="{standalone: true}"
           id="areaKitchen"
+          min="0">
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="floor">{{'FORM.FLOOR' | translate}}</label>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="rent.floor"
+          [ngModelOptions]="{standalone: true}"
+          id="floor"
+          min="0">
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="beds">{{'FORM.TOTAL_FLOORS' | translate}}</label>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="rent.totalFloors"
+          [ngModelOptions]="{standalone: true}"
+          id="totalFloors"
           min="0">
       </div>
     </div>
 
     <div class="form-row">
       <div class="form-group col-md-4">
-        <label for="rooms">Rooms</label>
+        <label for="rooms">{{'FORM.ROOMS' | translate}}</label>
         <input
           type="number"
           class="form-control"
+          [(ngModel)]="rent.rooms"
+          [ngModelOptions]="{standalone: true}"
           id="rooms"
           min="0">
       </div>
@@ -129,14 +197,89 @@
     <hr>
 
     <div class="form-row">
-      <div class="form-group">
-        <label for="date">Available since</label>
+      <div class="form-group col-md-6">
+        <label for="heating">{{'FORM.HEATING' | translate}}</label>
+        <select
+          class="form-control"
+          id="heating"
+          [(ngModel)]="rent.heating"
+          [ngModelOptions]="{standalone: true}">
+            <option>{{'FORM.CENTRAL' | translate}}</option>
+            <option>{{'FORM.INDIVIDUAL' | translate}}</option>
+            <option>{{'FORM.FIREPLACE' | translate}}</option>
+            <option>{{'FORM.STOVE' | translate}}</option>
+        </select>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="furniture">{{'FORM.FURNITURE' | translate}}</label>
+        <select
+          class="form-control"
+          id="furniture"
+          [(ngModel)]="rent.furniture"
+          [ngModelOptions]="{standalone: true}">
+            <option>{{'FORM.WITH_FURNITURE' | translate}}</option>
+            <option>{{'FORM.WITHOUT_FURNITURE' | translate}}</option>
+            <option>{{'FORM.PARTIALLY_WITH_FURNITURE' | translate}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="appliances">{{'FORM.APPIANCES' | translate}}</label>
+        <ng-select
+          [items]="[
+            'FORM.WASHING_MACHINE' | translate,
+            'FORM.GAS_STOVE' | translate,
+            'FORM.ELECTRIC_STOVE' | translate,
+            'FORM.MICROWAVE' | translate,
+            'FORM.DISHWASHER' | translate,
+            'FORM.TV' | translate,
+            'FORM.FRIDGE' | translate,
+            'FORM.COFFEE_MAKER' | translate
+          ]"
+          [multiple]="true"
+          [closeOnSelect]="false"
+          [searchable]="false"
+          bindLabel="type"
+          [(ngModel)]="rent.appliances"
+          id="appliances"
+          [ngModelOptions]="{standalone: true}">
+        </ng-select>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="additionalEquipment">{{'FORM.ADDITIONAL_EQUIPMENT' | translate}}</label>
+        <ng-select
+          [items]="[
+            'FORM.TOWELS' | translate,
+            'FORM.BEDCLOTHES' | translate,
+            'FORM.DISHES' | translate,
+            'FORM.INTERNET' | translate
+          ]"
+          [multiple]="true"
+          [closeOnSelect]="false"
+          [searchable]="false"
+          bindLabel="type"
+          [(ngModel)]="rent.additionalEquipment"
+          id="additionalEquipment"
+          [ngModelOptions]="{standalone: true}">
+        </ng-select>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="date">{{'FORM.AVAILABLE_SINCE' | translate}}</label>
         <div class="inline-row">
           <input
             class="form-control"
             placeholder="yyyy-mm-dd"
             name="dp"
-            [(ngModel)]="date"
+            [(ngModel)]="rent.available"
             ngbDatepicker
             id="date"
             #dp="ngbDatepicker">
@@ -146,6 +289,19 @@
             </button>
           </div>
         </div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="rentTerm">{{'FORM.RENT_TERM' | translate}}</label>
+        <select
+          class="form-control"
+          id="rentTerm"
+          [(ngModel)]="rent.rentTerm"
+          [ngModelOptions]="{standalone: true}">
+            <option>{{'FORM.1_MONTH' | translate}}</option>
+            <option>{{'FORM.HALF_YEAR' | translate}}</option>
+            <option>{{'FORM.1_YEAR' | translate}}</option>
+          </select> 
       </div>
     </div>
 
@@ -174,6 +330,19 @@
           [ngModelOptions]="{standalone: true}"
           maxlength="250"
           rows="5"></textarea>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <label for="additionalPayments">{{'FORM.ADDITIONAL_PAYMENTS' | translate}}</label>
+        <textarea
+          class="form-control"
+          id="additionalPayments"
+          [(ngModel)]="rent.additionalPayments"
+          [ngModelOptions]="{standalone: true}"
+          maxlength="100"
+          rows="3"></textarea>
       </div>
     </div>
   </form>

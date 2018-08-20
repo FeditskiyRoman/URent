@@ -21,6 +21,7 @@ import { RentPageComponent } from './rent-page/rent-page.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MomentModule } from 'ngx-moment';
 import { NguiMapModule} from '@ngui/map';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
@@ -50,6 +51,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     GooglePlaceModule,
     AppRoutingModule,
     MomentModule,
+    NgSelectModule,
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=AIzaSyAk5flZubiHIfvBh2NFIeNf9Qu-YasEAhM'}),
     TranslateModule.forRoot({
       loader: {
