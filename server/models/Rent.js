@@ -80,8 +80,7 @@ const Rent = new mongoose.Schema({
     default: []
   },
   available: {
-    type: Date,
-    default: Date.now
+    type: Schema.Types.Mixed
   },
   rentTerm: {
     type: String,

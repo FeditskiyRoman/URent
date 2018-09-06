@@ -103,6 +103,7 @@ module.exports.create = (req, res) => {
 };
 
 module.exports.files = (req, res) => {
+  console.log(req);
   return uploadFiles(req, res).then(img => {
     res.json(img);
   }).catch(err => res.status(500).send({

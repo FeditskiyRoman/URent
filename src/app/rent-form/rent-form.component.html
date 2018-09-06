@@ -243,6 +243,7 @@
           [closeOnSelect]="false"
           [searchable]="false"
           bindLabel="type"
+          [hideSelected]="true"
           [(ngModel)]="rent.appliances"
           id="appliances"
           [ngModelOptions]="{standalone: true}">
@@ -264,6 +265,7 @@
           bindLabel="type"
           [(ngModel)]="rent.additionalEquipment"
           id="additionalEquipment"
+          [hideSelected]="true"
           [ngModelOptions]="{standalone: true}">
         </ng-select>
       </div>
