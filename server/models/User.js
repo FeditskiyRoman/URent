@@ -17,6 +17,9 @@ const User = new mongoose.Schema({
     required: true,
     unique: true
   },
+  phone: {
+    type: String
+  },
   avatar: String,
   rents: [{
     type: String

@@ -4,16 +4,24 @@ const Roles = mongoose.model('Roles');
 
 module.exports = {
   version: 3,
-  message: 'Add renter role',
+  message: 'Add landlord and tenan role',
   script: next => {
-    const role = new Roles();
+    const landlord = new Roles();
+    const tenan = new Roles();
 
-    role.name = "renter";
+    landlord.name = "landlord";
+    tenan.name = "tenan";
 
-    role.save(
+    landlord.save(
       function (err) {
         if (!err) {
-          next();
+          tenan.save(
+            function (err) {
+              if (!err) {
+                next();
+              }
+            }
+          );
         }
       }
     );

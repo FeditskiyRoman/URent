@@ -23,7 +23,7 @@ export class RentFormComponent implements OnInit {
   constructor(
     private rentService: RentService,
     private calendar: NgbCalendar
-) {}
+  ) {}
 
   onAddressChange(address) {
     this.rent.address = {

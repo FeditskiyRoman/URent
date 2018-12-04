@@ -13,7 +13,8 @@ export class LoginComponent {
     email: '',
     password: '',
     first_name: '',
-    last_name: ''
+    last_name: '',
+    phone: null
   };
   fieldsInfo: String = '';
   fieldsMessage: String = 'info';

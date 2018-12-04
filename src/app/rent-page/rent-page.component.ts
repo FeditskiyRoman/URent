@@ -23,7 +23,6 @@ export class RentPageComponent implements OnInit {
 
       res.imgs = arr;
       this.rent = res;
-      console.log(this.rent);
     }));
   }
 }

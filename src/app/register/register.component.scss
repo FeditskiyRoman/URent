@@ -38,20 +38,6 @@ a {
   justify-content: center;
 }
 
-// ng classes
-.info {
-  visibility: none;
-}
-
-.error-message {
-  display: block;
-  color: red;
-}
-
-.error-input {
-  box-shadow: 0 0 0 0.2rem rgba(255, 0, 0, .25);
-}
-
 .success-message {
   display: block;
   color: rgb(0, 204, 102);
@@ -59,4 +45,9 @@ a {
 
 .success-input {
   box-shadow: 0 0 0 0.2rem rgba(0, 204, 102, .25);
+}
+
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched{
+  border: 1px solid red;
 }

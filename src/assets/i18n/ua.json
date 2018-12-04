@@ -6,6 +6,8 @@
     "BATHS": "Ванні кімнати",
     "PHOTOES": "Фото",
     "CHOSE-FILE": "Виберіть Фото",
-    "DESCRIPTION": "Опис"
+    "DESCRIPTION": "Опис",
+    "TENANT": "Орендодавець",
+    "LANDLORD": "Орендар"
   }
 }

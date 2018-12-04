@@ -50,6 +50,9 @@
     "TOWELS": "Towels",
     "BEDCLOTHES": "Bedclothes",
     "DISHES": "Dishes",
-    "INTERNET": "Internet"
+    "INTERNET": "Internet",
+    "TENANT": "Tenant",
+    "LANDLORD": "Landlord",
+    "ENTER_EMAIL": "Enter Email"
   }
 }
