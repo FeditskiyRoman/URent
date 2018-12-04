@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
-import { TokenPayload } from '../Models';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
@@ -15,7 +14,10 @@ export class RegisterComponent implements OnInit {
   constructor(private auth: AuthenticationService, private router: Router) {}
 
   register(form: NgForm) {
-    this.auth.register(form.value).subscribe(() => {
+    const values = form.value;
+    values.role = this.roleSelected;
+
+    this.auth.register(values).subscribe(() => {
       this.router.navigateByUrl('/profile');
     }, () => {
     });

@@ -17,6 +17,7 @@ export class LoginComponent {
 
   login(form: NgForm) {
     this.auth.login(form.value).subscribe(() => {
+      this.auth.redirect();
       this.router.navigateByUrl('/rent-list');
     }, (err) => {
       this.message = 'Wrong email or password';

@@ -8,7 +8,7 @@ const sendJSONresponse = (res, status, content) => {
 };
 
 module.exports.register = (req, res) => {
-  if (!req.body.first_name || !req.body.email || !req.body.password) {
+  if (!req.body.first_name || !req.body.email || !req.body.password || !req.body.role) {
     sendJSONresponse(res, 400, {
       "message": "All fields required"
     });
@@ -16,6 +16,8 @@ module.exports.register = (req, res) => {
   }
 
   const user = new User();
+
+  // TODO: add role search by req.body.role and put roles id to the user.role
 
   user.first_name = req.body.first_name;
   user.last_name = req.body.last_name;

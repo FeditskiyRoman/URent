@@ -30,7 +30,7 @@ export class AuthenticationService {
     return this.token;
   }
 
-  public getUserDetails(): User {
+  getUserDetails(): User {
     const token = this.getToken();
     let payload;
     if (token) {
@@ -60,6 +60,10 @@ export class AuthenticationService {
         return data;
       })
     );
+  }
+
+  public redirect() {
+    console.log(this.getUserDetails())
   }
 
   public login(user: TokenPayload): Observable<any> {

@@ -26,6 +26,7 @@ export class TokenPayload {
   first_name: String;
   last_name: String;
   phone: String | null;
+  role: String;
 }
 
 export class Rent {
