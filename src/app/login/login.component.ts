@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthenticationService } from '../authentication.service';
 import { TokenPayload } from '../Models';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,26 +10,16 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  credentials: TokenPayload = {
-    email: '',
-    password: '',
-    first_name: '',
-    last_name: '',
-    phone: null
-  };
   fieldsInfo: String = '';
-  fieldsMessage: String = 'info';
   message: String;
 
   constructor(private auth: AuthenticationService, private router: Router) {}
 
-  login() {
-    this.auth.login(this.credentials).subscribe(() => {
+  login(form: NgForm) {
+    this.auth.login(form.value).subscribe(() => {
       this.router.navigateByUrl('/rent-list');
     }, (err) => {
-      this.fieldsMessage = 'error-message';
-      this.fieldsInfo = 'error-input';
-      this.message = 'wrong email or password';
+      this.message = 'Wrong email or password';
     });
   }
 }
